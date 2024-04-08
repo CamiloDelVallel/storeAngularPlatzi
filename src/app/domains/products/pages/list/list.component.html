@@ -1,10 +1,25 @@
-<div  class="grid grid-cols-3 gap-8">
-    <app-product [title] = "'Producto 1'" [price]="12" img="https://picsum.photos/640/640?r=23" (addToCart)="fromChild($event)" />
-    <app-product [title] = "'Producto 2'" [price]="1" img="https://picsum.photos/640/640?r=24" (addToCart)="fromChild($event)"/>
-    <app-product [title] = "'Producto 3'" [price]="2" img="https://picsum.photos/640/640?r=25" (addToCart)="fromChild($event)"/>
-    <app-product [title] = "'Producto 4'" [price]="3" img="https://picsum.photos/640/640?r=26" (addToCart)="fromChild($event)"/>
-    <app-product [title] = "'Producto 5'" [price]="13" img="https://picsum.photos/640/640?r=73" (addToCart)="fromChild($event)"/>
-    <app-product [title] = "'Producto 6'" [price]="14" img="https://picsum.photos/640/640?r=28" (addToCart)="fromChild($event)"/>
-    <app-product [title] = "'Producto 7'" [price]="15" img="https://picsum.photos/640/640?r=29" (addToCart)="fromChild($event)"/>
 
+<div  class="grid grid-cols-3 gap-8">
+    <app-product 
+    *ngFor="let product of products()"
+    [product] = "product" 
+    (addToCart)="fromChild($event)" />
+</div>
+<!--
+<div  class="grid grid-cols-3 gap-8">
+    <app-product 
+    *ngFor="let product of products()"
+    [title] = "product.title" 
+    [price]="product.price" 
+    [img]="product.image" 
+    (addToCart)="fromChild($event)" />
+</div>
+-->
+<div  class="grid grid-cols-3 gap-8">
+    @for (product of products(); track $index) {
+        <app-product 
+            [product] = "product">
+            (addToCart)="fromChild($event)"
+        </app-product>
+    }
 </div>
