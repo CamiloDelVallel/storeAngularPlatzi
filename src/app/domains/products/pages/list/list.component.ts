@@ -1,9 +1,10 @@
 import { Component, inject, signal } from '@angular/core';
-import { ProductComponent } from './../../components/product/product.component'
-import { Product } from '../../../shared/models/product.model';
+import { ProductComponent } from '@products/components/product/product.component'
+import { Product } from '@shared/models/product.model';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from '../../../shared/components/header/header.component';
-import { CartService } from '../../../shared/services/cart.service';
+import { HeaderComponent } from '@shared/components/header/header.component';
+import { CartService } from '@shared/services/cart.service';
+import { ProductService } from '@shared/services/product.service';
 
 @Component({
   selector: 'app-list',
@@ -16,10 +17,11 @@ export class ListComponent {
 
   products = signal<Product[]>([])
   private cartService = inject(CartService);
+  private productService = inject(ProductService);
 
-
-  constructor(){
+  /* constructor(){
     const initProducts: Product[] = [
+      
       {
       id: Date.now(),
       title: 'Camisa',
@@ -79,8 +81,18 @@ export class ListComponent {
     ];
     this.products.set(initProducts);
   }
+  */
+
+  ngOnInit(){
+    this.productService.getProducts().subscribe({
+      next: (products) => {
+        this.products.set(products);
+      },
+      error: () => {}
+    })
+  }
 
   addToCard(product: Product){
     this.cartService.addToCart(product)
-  }
-}
+  } 
+} 

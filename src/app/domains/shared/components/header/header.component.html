@@ -82,16 +82,16 @@
     </button>
   </div>
   <div>
-    <div class="w-full flex flex-wrap items-center mx-5" *ngFor="let product of cart()">
-      <img [src]="product.image" class="h-20 w-20 rounded-s display:flex">
+    <div class="w-full flex flex-wrap items-center mx-2" *ngFor="let product of cart()">
+      <img [src]="product.images[0]" class="h-10 w-10 rounded-s display:flex">
       <div>
-        <p class="flex mx-5 top-0 text-2xl ">{{ product.title }}</p>
+        <p class="flex mx-5 top-0 text-xs ">{{ product.title }}</p>
         <p class="flex m-5 ">Precio ${{ product.price }}</p>
       </div>
     </div>
     @for (product of cart(); track $index) {
     }
-    <div>El valor total de los productos es {{ total() }}</div>
+    <div>El valor total de los productos es ${{ total() }}</div>
 
     <!--
     @for (product of cart; track $index) {
