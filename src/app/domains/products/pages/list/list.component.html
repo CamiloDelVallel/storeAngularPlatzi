@@ -1,10 +1,11 @@
 <div class="container mx-auto">
-    <app-header />
+    <app-header/>
+    <!--<h3 class="text-3xl text-right mr-10" >{{ cart().length }}</h3>-->
     <div  class="grid grid-cols-4 gap-8 m-5 ">
         <app-product 
         *ngFor="let product of products()"
         [product] = "product" 
-        (addToCart)="fromChild($event)" />
+        (addToCart)="addToCard(product)" />
     </div>
     <!--
     <div  class="grid grid-cols-3 gap-8">
@@ -15,13 +16,13 @@
         [img]="product.image" 
         (addToCart)="fromChild($event)" />
     </div>
-    -->
+    
     <div  class="grid grid-cols-5 gap-8 m-5">
         @for (product of products(); track $index) {
             <app-product 
-                [product] = "product">
-                (addToCart)="fromChild($event)"
+                [product] = "product" (addToCart)="addToCard(product)">
             </app-product>
         }
     </div>
+    -->
 </div>
