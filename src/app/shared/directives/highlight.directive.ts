@@ -7,11 +7,12 @@ import { Directive, ElementRef, inject } from '@angular/core';
 })
 export class HighlightDirective {
 
-    element = inject(ElementRef)
+    element = inject(ElementRef);
+    
   constructor() { }
 
   ngOnInit(){
-    this.element.nativeElement.style.backgroundcolor = 'red'
+    this.element.nativeElement.style.color = 'red'
   }
 
 }
