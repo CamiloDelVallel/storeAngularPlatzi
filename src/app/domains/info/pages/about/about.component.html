@@ -1,26 +1,28 @@
 
-    <div class="px-10">
-        <h1 class="text-lg font-bold">About</h1>
-        <p class="text_xs">Lorem ipsum dolor <span highlight>sit amet consectetur adipisicing elit.</span> Dolor harum deleniti necessitatibus minima itaque facere, deserunt nemo rerum, quos consequatur quo iste corrupti reiciendis animi optio quia quis dolorem. Quos.</p>
-        <p class="text_xs">Número de Clientes 
-            <app-counter [duration]="duration()" [message]="message()" *ngIf="duration() > 0 " />
-        </p>
-        <div>
-            <app-wave-audio audioURL="assets/audio.mp3"></app-wave-audio>
-        </div>
-    </div>
-    <a routerLink="/" 
-    class="inline-flex bg-blue-600 text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blues-300 font-medium rounded-lg text-sm mx-50 py-2.5 text-center my-4">Back to Homepage</a>
+<div class="px-10">
+  <h1 class="text-lg font-bold">About</h1>
+  <p class="text_xs">Lorem ipsum dolor <span highlight>sit amet consectetur adipisicing elit.</span> Dolor harum deleniti necessitatibus minima itaque facere, deserunt nemo rerum, quos consequatur quo iste corrupti reiciendis animi optio quia quis dolorem. Quos.</p>
+  <p class="text_xs">Número de Clientes
+    @if (duration() > 0 ) {
+      <app-counter [duration]="duration()" [message]="message()" />
+    }
+  </p>
+  <div>
+    <app-wave-audio audioURL="assets/audio.mp3"></app-wave-audio>
+  </div>
+</div>
+<a routerLink="/"
+class="inline-flex bg-blue-600 text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blues-300 font-medium rounded-lg text-sm mx-50 py-2.5 text-center my-4">Back to Homepage</a>
 
 <!--<p>
-    <input type="number" [value]="duration()" (change)="changeDuration($event)">
+<input type="number" [value]="duration()" (change)="changeDuration($event)">
 </p>
 <p>
-    <input type="text" [value]="message()" (change)="changeMessage($event)">
+  <input type="text" [value]="message()" (change)="changeMessage($event)">
 </p>
 -->
 
 <!--<p>
-    <app-counter [duration]="duration()" [message]="message()" *ngIf="duration() > 0 " />
+<app-counter [duration]="duration()" [message]="message()" *ngIf="duration() > 0 " />
 </p>
 -->
